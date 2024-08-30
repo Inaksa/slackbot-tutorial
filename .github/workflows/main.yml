@@ -6,6 +6,7 @@ on:
 jobs:
   label_issue:
     runs-on: ubuntu-latest
+    if: ${{ github.event.pusher.name == 'Alex Maggio'}}
     steps:
       - env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_KEY }}

@@ -11,4 +11,4 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_KEY }}
           ISSUE_URL: ${{ github.event.issue.html_url }}
         run: |
-          curl -X POST -H 'Authorization: Bearer $SLACK_BOT_TOKEN' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"Issue: $ISSUE_URL"}' https://slack.com/api/chat.postMessage
+          curl -X POST -H 'Authorization: $SLACK_BOT_TOKEN' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"Issue: $ISSUE_URL"}' https://slack.com/api/chat.postMessage

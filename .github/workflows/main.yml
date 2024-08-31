@@ -1,13 +1,18 @@
-on: push
+name: CI
+on:
+  push:
+    branches: [ main ]
+    
 jobs:
-  test:
-    name: Test
+  build:
     runs-on: ubuntu-latest
-  steps:
-    env:
-      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_KEY }}
-      ISSUE_URL: ${{ github.event.push.nextSha }}
-    run: |
-      curl -X POST -H 'Authorization: ${env:SLACK_BOT_TOKEN}' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"Issue: ${env:ISSUE_URL}"}' https://slack.com/api/chat.postMessage
-#      curl -X POST -H 'Authorization: Bearer xoxb-7338284001654-7651806241538-Yj9MXqOCOByyxffrxwcBffqg' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"Hello, Slack!"}' https://slack.com/api/chat.postMessage
+    steps:
+    - name: Notify release
+      run: |
+        curl -X POST -H 'Authorization: ${env:SLACK_BOT_TOKEN}' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"Issue: ${env:ISSUE_URL}"}' https://slack.com/api/chat.postMessage
+#      run: curl -X POST -H 'Authorization: Bearer xoxb-7338284001654-7651806241538-Yj9MXqOCOByyxffrxwcBffqg' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"Hello, Slack!"}' https://slack.com/api/chat.postMessage
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_KEY }}
+        ISSUE_URL: ${{ github.event.push.nextSha }}
+
 

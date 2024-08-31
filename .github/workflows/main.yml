@@ -18,7 +18,6 @@ jobs:
       run: |
         echo "$EVENT_DESCRIPTION"
         curl -X POST -H 'Authorization: ${{ secrets.SLACK_BOT_KEY }}' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"La librería `${{ github.event.repository.name }}` acaba de subir su versión al commit `${{ github.sha }}`"}' https://slack.com/api/chat.postMessage
-        curl -X POST -H 'Authorization: ${{ secrets.SLACK_BOT_KEY }}' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"${{ $EVENT_DESCRIPTION }}"}' https://slack.com/api/chat.postMessage
 #      run: curl -X POST -H 'Authorization: Bearer xoxb-7338284001654-7651806241538-Yj9MXqOCOByyxffrxwcBffqg' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"Hello, Slack!"}' https://slack.com/api/chat.postMessage
 
 

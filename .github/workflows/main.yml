@@ -13,7 +13,7 @@ jobs:
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_KEY }}
         EVENT: ${{ toJson(github) }}
-        MESSAGE: La librería `${{ github.event.repository.name }}` acaba de subir su versión al commit `${{ github.sha }}`
+        MESSAGE: 'La librería `${{ github.event.repository.name }}` acaba de subir su versión al commit `${{ github.sha }}`'
       run: |
         echo "$ISSUE_URL"
         curl -X POST -H 'Authorization: ${{ secrets.SLACK_BOT_KEY }}' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"${MESSAGE}"}' https://slack.com/api/chat.postMessage

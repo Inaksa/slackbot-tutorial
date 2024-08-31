@@ -16,7 +16,7 @@ jobs:
         MESSAGE: 'La librería `${{ github.event.repository.name }}` acaba de subir su versión al commit `${{ github.sha }}`'
       run: |
         echo "$ISSUE_URL"
-        curl -X POST -H 'Authorization: ${{ secrets.SLACK_BOT_KEY }}' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"${MESSAGE}"}' https://slack.com/api/chat.postMessage
+        curl -X POST -H 'Authorization: ${{ secrets.SLACK_BOT_KEY }}' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"${{ MESSAGE }}"}' https://slack.com/api/chat.postMessage
 #      run: curl -X POST -H 'Authorization: Bearer xoxb-7338284001654-7651806241538-Yj9MXqOCOByyxffrxwcBffqg' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"Hello, Slack!"}' https://slack.com/api/chat.postMessage
 
 

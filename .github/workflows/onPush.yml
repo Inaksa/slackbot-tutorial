@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    tags:        
+      - '**'
+jobs:
+  build:
+    - name: Notify release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: akiojin/decode-base64-github-action@v0.1.0
+        with:
+          base64: eG94Yi03MzM4Mjg0MDAxNjU0LTc2NTE4MDYyNDE1MzgtUjlESDZMQzJPcW52TVhta04wZHprSHB0
+          environment: DECODED
+      env:
+        EVENT_DESCRIPTION: ${{ toJson(github) }}
+      run: |
+        curl -X POST -H 'Authorization: ${{ $DECODED }}' -H 'Content-type: application/json;charset=utf-8' --data '{"channel":"#testplugins","text":"La librería `${{ github.event.repository.name }}` acaba de subir su versión a `${{ github.ref_name }}`"}' https://slack.com/api/chat.postMessage

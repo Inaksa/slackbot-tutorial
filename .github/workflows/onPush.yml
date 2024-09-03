@@ -6,9 +6,9 @@ on:
       - '**'
 jobs:
   build:
-    - name: Notify release
     runs-on: ubuntu-latest
     steps:
+      - name: Notify release
       - uses: akiojin/decode-base64-github-action@v0.1.0
         with:
           base64: eG94Yi03MzM4Mjg0MDAxNjU0LTc2NTE4MDYyNDE1MzgtUjlESDZMQzJPcW52TVhta04wZHprSHB0

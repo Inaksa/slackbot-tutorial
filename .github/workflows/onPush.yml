@@ -1,11 +1,10 @@
-name: CI
+name: Notify release
 
 on:
   push:
     tags:        
       - '**'
 jobs:
-  name: Notify release
   build:
     runs-on: ubuntu-latest
     steps:
